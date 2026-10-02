@@ -56,3 +56,8 @@ reports/*.md
 # automatically when this folder is opened as a project through
 # Anaconda's UI, machine-specific, never meant to be committed.
 anaconda_projects/
+
+# Dataset/model downloads cached in the project folder (20 newsgroups,
+# NLTK punkt) -- see helpers/__init__.py.
+scikit_learn_data/
+nltk_data/
