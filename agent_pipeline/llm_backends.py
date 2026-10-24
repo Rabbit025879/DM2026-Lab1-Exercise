@@ -67,7 +67,7 @@ _MODEL_BY_BACKEND = {
     "gemini": "gemini-3.6-flash",
 }
 _DEFAULT_REQUEST_TIMEOUT_SECONDS = 60
-_MAX_NUMBERED_KEYS = 10
+_MAX_NUMBERED_KEYS = 40 # Increased from 10 to 40 (4 accounts, 10 keys per account).
 
 
 def _is_placeholder(value: str) -> bool:
@@ -82,7 +82,7 @@ def _is_placeholder(value: str) -> bool:
 
 def get_api_keys(backend: str, env_path: str = "config/.env") -> list[str]:
     """Returns every usable key configured for `backend`, in order. Looks
-    for {ENV_VAR}_1 through {ENV_VAR}_10 first; if none of those are
+    for {ENV_VAR}_1 through {ENV_VAR}_40 first; if none of those are
     set, falls back to the plain {ENV_VAR}. Returns an empty list if
     nothing usable is configured -- callers decide whether that's an
     error (get_api_key does) or just a "not available yet" (has_api_key
