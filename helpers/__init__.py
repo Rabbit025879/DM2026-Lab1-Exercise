@@ -6,8 +6,11 @@ __all__ = ["emo_data_helpers","emo_cnn_helpers", "vowel_helpers", "deepir","word
 import os
 
 _PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-os.environ.setdefault("SCIKIT_LEARN_DATA", os.path.join(_PROJECT_ROOT, "scikit_learn_data"))
-os.environ.setdefault("NLTK_DATA", os.path.join(_PROJECT_ROOT, "nltk_data"))
+# Set (not setdefault) so an NLTK_DATA / SCIKIT_LEARN_DATA already exported in
+# the shell can't send the downloads back to the home directory. Subprocesses
+# started from the notebook (e.g. the agent-dev pytest runs) inherit these too.
+os.environ["SCIKIT_LEARN_DATA"] = os.path.join(_PROJECT_ROOT, "scikit_learn_data")
+os.environ["NLTK_DATA"] = os.path.join(_PROJECT_ROOT, "nltk_data")
 # nltk only downloads into a directory that already exists, and it fixes both
 # its search path and its download target when it is first imported -- so
 # create the folder before importing it, and patch both in case it was
